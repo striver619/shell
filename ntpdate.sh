@@ -1,5 +1,10 @@
 #!/bin/bash
 
+cst()
+{
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+}
+
 pkgs()
 {
     yum install ntpdate -y
@@ -12,6 +17,7 @@ synchro_time()
 
 main()
 {
+    cst
     pkgs
     synchro_time
 }
