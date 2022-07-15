@@ -1,14 +1,20 @@
 
-┌───────────── second 范围 (0 - 60)
-│ ┌───────────── min (0 - 59)
-│ │ ┌────────────── hour (0 - 23)
-│ │ │ ┌─────────────── day of month (1 - 31)
-│ │ │ │ ┌──────────────── month (1 - 12)
-│ │ │ │ │ ┌───────────────── day of week (0 - 6) (0 to 6 are Sunday to Saturday)
-│ │ │ │ │ │
-│ │ │ │ │ │
-│ │ │ │ │ │
-* * * * * *
+
+[k8s@k8s-node-4 ~]$ cat /etc/crontab
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+
+# For details see man 4 crontabs
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
 
 
 【*】 表示 cron 表达式能匹配该字段的所有值。
@@ -53,20 +59,9 @@
 
 （2）指定 时间范围 执行
 
-0 3-59 * * * *             //每月每天每时【3分-59分之间】0秒执行一次
+# 每分钟执行一次
+*/1 * * * * /home/k8s/bin/sd.sh > /dev/null 2>&1 &
 
-
-（3）指定 时间间隔 执行
-
-0 */15 * * * *             //每月每天每时【每间隔15分钟】0秒执行一次
-
-
-（4）指定 时间范围 和 时间间隔 执行
-
-0 3-59/15 * * * *       //每月每天每时【0分-59分之间，每间隔15分钟】0秒执行一次
-
-
-（5）指定 时间点枚举值 执行
-
-0 3,59 * * * *             //每月每天每时【3分,59分】0秒执行一次
+# 每30分钟执行一次
+*/30 * * * * /home/k8s/bin/sd.sh > /dev/null 2>&1 &
 
