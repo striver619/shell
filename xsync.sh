@@ -2,11 +2,12 @@
 
 # deps: yum install rsync -y
 
-hosts=(
-host01
-host02
-host03
-)
+# cat hosts
+#hadoop102
+#hadoop103
+#hadoop104
+
+hosts=( $(cat hosts) )
 
 #1. 判断参数个数
 if [ $# -lt 1 ]
