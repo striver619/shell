@@ -5,7 +5,7 @@
 #hadoop103
 #hadoop104
 
-hosts=( $(cat hosts) )
+hosts=( $(cat $HOME/bin/hosts) )
 
 for host in ${hosts[@]}
 do
