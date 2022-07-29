@@ -7,7 +7,7 @@
 #hadoop103
 #hadoop104
 
-hosts=( $(cat hosts) )
+hosts=( $(cat $HOME/bin/hosts) )
 
 #1. 判断参数个数
 if [ $# -lt 1 ]
