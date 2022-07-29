@@ -1,10 +1,11 @@
 #!/bin/bash
 
-hosts=(
-host01
-host02
-host03
-)
+# cat hosts
+#hadoop102
+#hadoop103
+#hadoop104
+
+hosts=( $(cat hosts) )
 
 for host in ${hosts[@]}
 do
