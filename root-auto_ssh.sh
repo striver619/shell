@@ -27,3 +27,10 @@ expect {
             }
         }
 expect eof
+
+
+
+# usage
+# chmod 777 root-auto_ssh.sh
+# 然后执行下述命令即可。
+# ./auto_ssh.sh root 123456 192.168.0.6
