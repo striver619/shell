@@ -52,3 +52,30 @@ expect eof
 ./auto_ssh.sh test3 123456 192.168.20.103
 ./auto_ssh.sh test4 123456 192.168.20.104
 
+# 6. 配置 $HOME/.ssh/config
+
+vim $HOME/.ssh/config
+
+Host t2
+  Hostname 192.168.20.102
+  Port 22
+  User test
+
+Host t3
+  Hostname 192.168.20.103
+  Port 22
+  User test3
+
+Host t4
+  Hostname 192.168.20.104
+  Port 22
+  User test4
+
+# 7. 授权 $HOME/.ssh/config 文件 600 权限
+
+chmod 600 $HOME/.ssh/config
+
+# no passwd ssh
+ssh t2
+ssh t3
+ssh t4
