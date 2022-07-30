@@ -22,5 +22,7 @@ Host t4
 chmod 600 $HOME/.ssh/config
 
 ssh t2
+
 ssh t3
+
 ssh t4
