@@ -6,11 +6,14 @@
 # source code
 # https://www.cnblogs.com/archoncap/p/6134922.html
 
+# first
+# ssh-keygen -t rsa
+
 set timeout 10  
 set username [lindex $argv 0]  
 set password [lindex $argv 1]  
 set hostname [lindex $argv 2]  
-spawn ssh-copy-id -i /root/.ssh/id_rsa.pub $username@$hostname
+spawn ssh-copy-id -i /home/test/.ssh/id_rsa.pub $username@$hostname
 expect {
             #first connect, no public key in ~/.ssh/known_hosts
             "Are you sure you want to continue connecting (yes/no)?" {
@@ -30,7 +33,7 @@ expect eof
 
 
 
-# usage
+# usage:
 # chmod 777 root-auto_ssh.sh
 # 然后执行下述命令即可。
-# ./auto_ssh.sh root 123456 192.168.0.6
+# ./auto_ssh.sh test 123456 192.168.0.6
