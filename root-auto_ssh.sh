@@ -1,19 +1,27 @@
-#!/usr/bin/expect  
-
-# vim auto_ssh.sh
-# yum install expect tcl-devel
+# refer
 # https://blog.csdn.net/piaoranyuji/article/details/109600245
-# source code
 # https://www.cnblogs.com/archoncap/p/6134922.html
 
-# first
+# 1. first install deps
+# yum install expect tcl-devel -y
+
+# 2. second generate public key
 # ssh-keygen -t rsa
+
+# 3. edit auto_ssh.sh
+# vim auto_ssh.sh
+
+#!/usr/bin/expect
+
+set -e
 
 set timeout 10  
 set username [lindex $argv 0]  
 set password [lindex $argv 1]  
 set hostname [lindex $argv 2]  
+
 spawn ssh-copy-id -i /home/test/.ssh/id_rsa.pub $username@$hostname
+
 expect {
             #first connect, no public key in ~/.ssh/known_hosts
             "Are you sure you want to continue connecting (yes/no)?" {
@@ -31,9 +39,16 @@ expect {
         }
 expect eof
 
+# 4. 加可执行权限
+# chmod 777 auto_ssh.sh
 
+# 5. 编辑批量脚本
 
-# usage:
-# chmod 777 root-auto_ssh.sh
-# 然后执行下述命令即可。
-# ./auto_ssh.sh test 123456 192.168.0.6
+# vim a.sh
+
+#!/bin/bash
+
+./auto_ssh.sh test 123456 192.168.20.102
+./auto_ssh.sh test3 123456 192.168.20.103
+./auto_ssh.sh test4 123456 192.168.20.104
+
