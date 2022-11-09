@@ -14,6 +14,7 @@ if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
 
-export HISTTIMEFORMAT="%d/%m/%y %T "
+#export HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTTIMEFORMAT="%Y-%m-%d %T "
 
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
