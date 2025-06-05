@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# to fix no rsync env, by scp replace
+# to fix no rsync env, by scp replace it
 
 hosts=(
 hostname1
